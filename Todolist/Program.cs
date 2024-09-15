@@ -8,19 +8,25 @@ namespace Todolist
         static void Main(string[] args)
         {
            
-
             ShowMenu();
             while (true)
             {
                 // get user input
                 Console.WriteLine("Enter your choice(1-5): ");
-                string userInput = Console.ReadLine();
+                string? userInput = Console.ReadLine();
 
                 // handle user request
                 switch (userInput)
                 {
                     case "1":
-                        
+                        taskManager.AddTask();
+                        break;
+                    case "2":
+                        taskManager.ViewTask();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice");
+                        break;
                 }
                 
             }
