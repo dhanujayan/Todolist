@@ -96,5 +96,34 @@ namespace Todolist
                 Console.WriteLine("Please enter the task name");
             }
         }
+
+        public bool MarkTaskCompleted()
+        {
+            DisplayAllTasks();
+            Console.WriteLine("Enter the number of the task to mark as completed");
+            if (int.TryParse(Console.ReadLine(), out int taskNumber) && taskNumber >= 1 && taskNumber <= tasks.Count)
+            {
+                int index = taskNumber - 1;
+                if (!taskCompletion[index])
+                {
+                    taskCompletion[index] = true;
+                    Console.WriteLine($"Task '{tasks[index]}' marked as Completed");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Task is already marked as completed");
+                    return false;
+                }
+            }
+            else 
+            {
+                Console.WriteLine("Invalid task number");
+                return false;
+            }
+
+        }
+
+
     }
 }

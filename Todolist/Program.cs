@@ -24,6 +24,9 @@ namespace Todolist
                     case "2":
                         taskManager.ViewTask();
                         break;
+                    case "3":
+                        taskManager.MarkTaskCompleted();
+                        break;
                     default:
                         Console.WriteLine("Invalid choice");
                         break;
