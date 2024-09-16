@@ -27,6 +27,9 @@ namespace Todolist
                     case "3":
                         taskManager.MarkTaskCompleted();
                         break;
+                    case "4":
+                        taskManager.DeleteTask();
+                        break;
                     default:
                         Console.WriteLine("Invalid choice");
                         break;

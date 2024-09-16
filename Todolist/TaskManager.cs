@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -124,6 +125,35 @@ namespace Todolist
 
         }
 
+        public bool DeleteTask()
+        {
+            DisplayAllTasks();
+            Console.WriteLine("Please enter the number of the task to delete");
+            if(int.TryParse(Console.ReadLine(),out int taskNumber) && taskNumber >= 1 && taskNumber <= tasks.Count)
+                {
+                int index = taskNumber - 1;
+                Console.WriteLine($"Are you sure you want to delete the task '{tasks[index]}'?(y/n)");
+                string confirm = Console.ReadLine();
 
+                if(confirm.Equals("y", StringComparison.OrdinalIgnoreCase))
+                {
+                    tasks.RemoveAt(index);
+                    taskCompletion.RemoveAt(index);
+                    Console.WriteLine("Task successfully deleted");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Task deletion cancelled");
+                    return false ;
+                }
+
+                }
+            else
+            {
+                Console.WriteLine("Invalid task number");
+                return false;
+            }
+        }
     }
 }
